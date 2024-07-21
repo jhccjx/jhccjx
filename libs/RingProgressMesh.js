@@ -20,23 +20,24 @@ float circle(vec2 pt, vec2 center, float radius){
   return (len<radius) ? 1.0 : 0.0;
 }
 
-float arc(vec2 pt, vec2 center, float radius, float percent){
-  float result = 0.0;
+float arc(vec2 pt, vec2 center, float radius, float percent) {
+    float result = 0.0;
 
-  vec2 d = pt - center;
-  float len = length(d);
-  float halfRadius = radius * 0.5;
+    vec2 d = pt - center;
+    float len = length(d);
+    float halfRadius = radius * 0.5;
 
-  if ( len<radius && len>halfRadius){
-    percent = clamp(percent, 0.0, 1.0);
-    float arcAngle = PI2 * percent;
+    if (len < radius && len > halfRadius) {
+        percent = clamp(percent, 0.0, 1.0);
+        float arcAngle = PI2 * percent;
 
-    float angle = mod( arcAngle - atan(d.y, d.x), PI2);
-    float edgeWidth = radius * 0.05;
-    result = (angle<arcAngle) ? smoothstep(halfRadius, halfRadius + edgeWidth, len) - smoothstep(radius-edgeWidth, radius, len) : 0.0;
-  }
+        // Change the order of subtraction to reverse direction
+        float angle = mod(atan(d.y, d.x) + arcAngle, PI2); 
+        float edgeWidth = radius * 0.05;
+        result = (angle < arcAngle) ? smoothstep(halfRadius, halfRadius + edgeWidth, len) - smoothstep(radius - edgeWidth, radius, len) : 0.0;
+    }
 
-  return result;
+    return result;
 }
 
 void main (void)
