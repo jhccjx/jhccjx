@@ -101,15 +101,14 @@ class VRButton{
 
         }
 
-        // Center the button
         button.style.display = '';
-        button.style.position = 'absolute'; // Ensure the button is positioned absolutely
-        button.style.top = '50%'; // Move to the vertical center
-        button.style.left = '50%'; // Move to the horizontal center
-        button.style.transform = 'translate(-50%, -50%)'; // Adjust position to truly center it
+        button.style.position = 'absolute'; 
+        button.style.top = '50%'; 
+        button.style.left = '50%'; 
+        button.style.transform = 'translate(-50%, -50%)'; 
         button.style.width = '80px';
         button.style.cursor = 'pointer';
-        button.innerHTML = '<i class="bi bi-headset-vr"></i>';
+        button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
 
         button.onmouseenter = function () {
             button.style.fontSize = '12px';
@@ -119,7 +118,7 @@ class VRButton{
 
         button.onmouseleave = function () {
             button.style.fontSize = '30px';
-            button.innerHTML = '<i class="bi bi-headset-vr"></i>';
+            button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
             button.style.opacity = '0.5';
         };
 
