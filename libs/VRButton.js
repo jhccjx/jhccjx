@@ -96,7 +96,7 @@ class VRButton{
     button.style.position = 'absolute'; 
     button.style.left = '50%'; // Move to the horizontal center
     button.style.top = '50%';
-    button.style.transform = 'translateX(-40%, -40%)'; // Adjust position to center it horizontally
+    button.style.transform = 'translateX(-60%, -60%)'; // Adjust position to center it horizontally
     button.style.width = '120px';  // Increase width
     button.style.height = '120px';  // Increase height
     button.style.cursor = 'pointer';
