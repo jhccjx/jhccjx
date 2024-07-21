@@ -108,7 +108,11 @@ class VRButton{
         button.style.transform = 'translate(-50%, -50%)'; 
         button.style.width = '80px';
         button.style.cursor = 'pointer';
-        button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
+        button.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-vr" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 0 0-8 8c0 3.313 2.013 6.166 4.761 7.434A2.5 2.5 0 0 1 6 14.5h4a2.5 2.5 0 0 1 .239 1.934C13.987 14.166 16 11.313 16 8a8 8 0 0 0-8-8zm-1.5 11H6v-1.5h.5v1.5zm1.5 0H8v-1.5h.5v1.5zm1.5 0H10v-1.5h.5v1.5zm1.5 0H12v-1.5h.5v1.5zM8 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13z"/>
+        </svg>
+    `;
 
         button.onmouseenter = function () {
             button.style.fontSize = '12px';
@@ -118,7 +122,11 @@ class VRButton{
 
         button.onmouseleave = function () {
             button.style.fontSize = '30px';
-            button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
+            button.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-vr" viewBox="0 0 16 16">
+                <path d="M8 0a8 8 0 0 0-8 8c0 3.313 2.013 6.166 4.761 7.434A2.5 2.5 0 0 1 6 14.5h4a2.5 2.5 0 0 1 .239 1.934C13.987 14.166 16 11.313 16 8a8 8 0 0 0-8-8zm-1.5 11H6v-1.5h.5v1.5zm1.5 0H8v-1.5h.5v1.5zm1.5 0H10v-1.5h.5v1.5zm1.5 0H12v-1.5h.5v1.5zM8 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13z"/>
+            </svg>
+        `;
             button.style.opacity = '0.5';
         };
 
