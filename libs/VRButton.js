@@ -66,80 +66,72 @@ class VRButton{
 
     }
 
-	showEnterVR( button ) {
+	showEnterVR(button) {
+    let currentSession = null;
+    const self = this;
 
-        let currentSession = null;
-        const self = this;
-        
-        this.stylizeElement( button, true, 30, true );
-        
-        function onSessionStarted( session ) {
+    this.stylizeElement(button, true, 30, true);
 
-            session.addEventListener( 'end', onSessionEnded );
+    function onSessionStarted(session) {
+        session.addEventListener('end', onSessionEnded);
+        self.renderer.xr.setSession(session);
+        self.stylizeElement(button, false, 12, true);
+        button.textContent = 'EXIT VR';
+        currentSession = session;
 
-            self.renderer.xr.setSession( session );
-            self.stylizeElement( button, false, 12, true );
-            
-            button.textContent = 'EXIT VR';
+        if (self.onSessionStart !== undefined) self.onSessionStart();
+    }
 
-            currentSession = session;
-            
-            if (self.onSessionStart !== undefined) self.onSessionStart();
+    function onSessionEnded() {
+        currentSession.removeEventListener('end', onSessionEnded);
+        self.stylizeElement(button, true, 12, true);
+        button.textContent = 'ENTER VR';
+        currentSession = null;
 
-        }
+        if (self.onSessionEnd !== undefined) self.onSessionEnd();
+    }
 
-        function onSessionEnded( ) {
+    // Center the button
+    button.style.display = '';
+    button.style.position = 'absolute'; 
+    button.style.top = '50%'; 
+    button.style.left = '50%'; 
+    button.style.transform = 'translate(-50%, -50%)'; 
+    button.style.width = '120px';  // Increase width
+    button.style.height = '120px';  // Increase height
+    button.style.cursor = 'pointer';
 
-            currentSession.removeEventListener( 'end', onSessionEnded );
+    // Replace the icon with the Bootstrap SVG
+    button.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-headset-vr" viewBox="0 0 16 16">
+            <path d="M8 1.248c1.857 0 3.526.641 4.65 1.794a5 5 0 0 1 2.518 1.09C13.907 1.482 11.295 0 8 0 4.75 0 2.12 1.48.844 4.122a5 5 0 0 1 2.289-1.047C4.236 1.872 5.974 1.248 8 1.248"/>
+            <path d="M12 12a4 4 0 0 1-2.786-1.13l-.002-.002a1.6 1.6 0 0 0-.276-.167A2.2 2.2 0 0 0 8 10.5c-.414 0-.729.103-.935.201a1.6 1.6 0 0 0-.277.167l-.002.002A4 4 0 1 1 4 4h8a4 4 0 0 1 0 8"/>
+        </svg>
+    `;
 
-            self.stylizeElement( button, true, 12, true );
-            button.textContent = 'ENTER VR';
+    button.onmouseenter = function () {
+        button.style.fontSize = '12px';
+        button.textContent = (currentSession === null) ? 'ENTER VR' : 'EXIT VR';
+        button.style.opacity = '1.0';
+    };
 
-            currentSession = null;
-            
-            if (self.onSessionEnd !== undefined) self.onSessionEnd();
-
-        }
-
-        button.style.display = '';
-        button.style.position = 'absolute'; 
-        button.style.top = '50%'; 
-        button.style.left = '50%'; 
-        button.style.transform = 'translate(-50%, -50%)'; 
-        button.style.width = '120px';
-        button.style.height = '120px';
-        button.style.cursor = 'pointer';
+    button.onmouseleave = function () {
+        button.style.fontSize = '30px';
         button.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-headset-vr" viewBox="0 0 16 16">
-            <path d="M8 1.248c1.857 0 3.526.641 4.65 1.794a5 5 0 0 1 2.518 1.09C13.907 1.482 11.295 0 8 0 4.75 0 2.12 1.48.844 4.122a5 5 0 0 1 2.289-1.047C4.236 1.872 5.974 1.248 8 1.248"/>
-            <path d="M12 12a4 4 0 0 1-2.786-1.13l-.002-.002a1.6 1.6 0 0 0-.276-.167A2.2 2.2 0 0 0 8 10.5c-.414 0-.729.103-.935.201a1.6 1.6 0 0 0-.277.167l-.002.002A4 4 0 1 1 4 4h8a4 4 0 0 1 0 8"/>
-        </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-headset-vr" viewBox="0 0 16 16">
+                <path d="M8 1.248c1.857 0 3.526.641 4.65 1.794a5 5 0 0 1 2.518 1.09C13.907 1.482 11.295 0 8 0 4.75 0 2.12 1.48.844 4.122a5 5 0 0 1 2.289-1.047C4.236 1.872 5.974 1.248 8 1.248"/>
+                <path d="M12 12a4 4 0 0 1-2.786-1.13l-.002-.002a1.6 1.6 0 0 0-.276-.167A2.2 2.2 0 0 0 8 10.5c-.414 0-.729.103-.935.201a1.6 1.6 0 0 0-.277.167l-.002.002A4 4 0 1 1 4 4h8a4 4 0 0 1 0 8"/>
+            </svg>
         `;
+    };
 
-        button.onmouseenter = function () {
-            button.style.fontSize = '12px';
-            button.textContent = (currentSession === null) ? 'ENTER VR' : 'EXIT VR';
-            button.style.opacity = '1.0';
-         };
-
-        button.onmouseleave = function () {
-            button.style.fontSize = '30px';
-            button.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-headset-vr" viewBox="0 0 16 16">
-            <path d="M8 1.248c1.857 0 3.526.641 4.65 1.794a5 5 0 0 1 2.518 1.09C13.907 1.482 11.295 0 8 0 4.75 0 2.12 1.48.844 4.122a5 5 0 0 1 2.289-1.047C4.236 1.872 5.974 1.248 8 1.248"/>
-            <path d="M12 12a4 4 0 0 1-2.786-1.13l-.002-.002a1.6 1.6 0 0 0-.276-.167A2.2 2.2 0 0 0 8 10.5c-.414 0-.729.103-.935.201a1.6 1.6 0 0 0-.277.167l-.002.002A4 4 0 1 1 4 4h8a4 4 0 0 1 0 8"/>
-        </svg>
-        `;
-            button.style.opacity = '0.5';
-        };
-
-        button.onclick = function () {
-            if (currentSession === null) {
-                navigator.xr.requestSession(self.sessionMode, self.sessionInit).then(onSessionStarted);
-            } else {
-                currentSession.end();
-            }
-        };
+    button.onclick = function () {
+        if (currentSession === null) {
+            navigator.xr.requestSession(self.sessionMode, self.sessionInit).then(onSessionStarted);
+        } else {
+            currentSession.end();
+        }
+    };
 
         //
 
