@@ -91,15 +91,17 @@ class VRButton{
         if (self.onSessionEnd !== undefined) self.onSessionEnd();
     }
 
-    // Center the button
+    // Center the button and icon horizontally
     button.style.display = '';
     button.style.position = 'absolute'; 
-    button.style.top = '50%'; 
-    button.style.left = '50%'; 
-    button.style.transform = 'translate(-50%, -50%)'; 
+    button.style.left = '50%'; // Move to the horizontal center
+    button.style.transform = 'translateX(-50%)'; // Adjust position to center it horizontally
     button.style.width = '120px';  // Increase width
     button.style.height = '120px';  // Increase height
     button.style.cursor = 'pointer';
+    button.style.display = 'flex';
+    button.style.justifyContent = 'center'; // Center the icon horizontally
+    button.style.alignItems = 'center'; // Center the icon vertically
 
     // Replace the icon with the Bootstrap SVG
     button.innerHTML = `
