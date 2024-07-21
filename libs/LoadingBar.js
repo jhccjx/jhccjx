@@ -12,7 +12,6 @@ class LoadingBar{
 		this.domElement.style.alignItems = 'center';
 		this.domElement.style.justifyContent = 'center';
 		this.domElement.style.zIndex = '1111';
-		this.domElement.style.flexDirection = 'column';
 		const barBase = document.createElement("div");
 		barBase.style.background = '#aaa';
 		barBase.style.width = '50%';
@@ -28,32 +27,6 @@ class LoadingBar{
 		bar.style.width = '0';
 		barBase.appendChild(bar);
 		this.progressBar = bar;
-
-		// Create title element
-        const title = document.createElement("div");
-        title.style.color = '#fff'; // White text color
-        title.style.fontSize = '24px'; // Font size
-        title.style.marginBottom = '10px'; // Space between title and bar
-        title.textContent = options.title || 'Loading...'; // Set title text
-        this.domElement.appendChild(title);
-
-        // Create the loading bar base
-        const barBase = document.createElement("div");
-        barBase.style.background = '#aaa';
-        barBase.style.width = '50%';
-        barBase.style.minWidth = '250px';
-        barBase.style.borderRadius = '10px';
-        barBase.style.height = '15px';
-        this.domElement.appendChild(barBase);
-
-        // Create the progress bar
-        const bar = document.createElement("div");
-        bar.style.background = '#22a';
-        bar.style.borderRadius = '10px';
-        bar.style.height = '100%';
-        bar.style.width = '0'; // Initial width
-        barBase.appendChild(bar);
-        this.progressBar = bar;
 		
 		document.body.appendChild(this.domElement);
 		
