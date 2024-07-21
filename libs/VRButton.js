@@ -133,29 +133,6 @@ class VRButton{
 
         //
 
-        button.style.display = '';
-        button.style.right = '20px';
-        button.style.width = '80px';
-        button.style.cursor = 'pointer';
-        button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
-        
-
-        button.onmouseenter = function () {
-            
-            button.style.fontSize = '12px'; 
-            button.textContent = (currentSession===null) ? 'ENTER VR' : 'EXIT VR';
-            button.style.opacity = '1.0';
-
-        };
-
-        button.onmouseleave = function () {
-            
-            button.style.fontSize = '30px'; 
-            button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
-            button.style.opacity = '0.5';
-
-        };
-
         button.onclick = function () {
 
             if ( currentSession === null ) {
