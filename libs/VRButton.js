@@ -108,7 +108,7 @@ class VRButton{
         button.style.transform = 'translate(-50%, -50%)'; 
         button.style.width = '80px';
         button.style.cursor = 'pointer';
-        button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
+        button.innerHTML = '<i class="fas fa-vr-headset"></i>';
 
         button.onmouseenter = function () {
             button.style.fontSize = '12px';
