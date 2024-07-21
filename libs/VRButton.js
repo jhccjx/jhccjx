@@ -109,7 +109,7 @@ class VRButton{
         button.style.transform = 'translate(-50%, -50%)'; // Adjust position to truly center it
         button.style.width = '80px';
         button.style.cursor = 'pointer';
-        button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
+        button.innerHTML = '<i class="bi bi-headset-vr"></i>';
 
         button.onmouseenter = function () {
             button.style.fontSize = '12px';
@@ -119,7 +119,7 @@ class VRButton{
 
         button.onmouseleave = function () {
             button.style.fontSize = '30px';
-            button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
+            button.innerHTML = '<i class="bi bi-headset-vr"></i>';
             button.style.opacity = '0.5';
         };
 
