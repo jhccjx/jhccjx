@@ -109,9 +109,10 @@ class VRButton{
         button.style.width = '80px';
         button.style.cursor = 'pointer';
         button.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-vr" viewBox="0 0 16 16">
-            <path d="M8 0a8 8 0 0 0-8 8c0 3.313 2.013 6.166 4.761 7.434A2.5 2.5 0 0 1 6 14.5h4a2.5 2.5 0 0 1 .239 1.934C13.987 14.166 16 11.313 16 8a8 8 0 0 0-8-8zm-1.5 11H6v-1.5h.5v1.5zm1.5 0H8v-1.5h.5v1.5zm1.5 0H10v-1.5h.5v1.5zm1.5 0H12v-1.5h.5v1.5zM8 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13z"/>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset-vr" viewBox="0 0 16 16">
+  <path d="M8 1.248c1.857 0 3.526.641 4.65 1.794a5 5 0 0 1 2.518 1.09C13.907 1.482 11.295 0 8 0 4.75 0 2.12 1.48.844 4.122a5 5 0 0 1 2.289-1.047C4.236 1.872 5.974 1.248 8 1.248"/>
+  <path d="M12 12a4 4 0 0 1-2.786-1.13l-.002-.002a1.6 1.6 0 0 0-.276-.167A2.2 2.2 0 0 0 8 10.5c-.414 0-.729.103-.935.201a1.6 1.6 0 0 0-.277.167l-.002.002A4 4 0 1 1 4 4h8a4 4 0 0 1 0 8"/>
+</svg>
     `;
 
         button.onmouseenter = function () {
@@ -123,9 +124,10 @@ class VRButton{
         button.onmouseleave = function () {
             button.style.fontSize = '30px';
             button.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-vr" viewBox="0 0 16 16">
-                <path d="M8 0a8 8 0 0 0-8 8c0 3.313 2.013 6.166 4.761 7.434A2.5 2.5 0 0 1 6 14.5h4a2.5 2.5 0 0 1 .239 1.934C13.987 14.166 16 11.313 16 8a8 8 0 0 0-8-8zm-1.5 11H6v-1.5h.5v1.5zm1.5 0H8v-1.5h.5v1.5zm1.5 0H10v-1.5h.5v1.5zm1.5 0H12v-1.5h.5v1.5zM8 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13z"/>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset-vr" viewBox="0 0 16 16">
+  <path d="M8 1.248c1.857 0 3.526.641 4.65 1.794a5 5 0 0 1 2.518 1.09C13.907 1.482 11.295 0 8 0 4.75 0 2.12 1.48.844 4.122a5 5 0 0 1 2.289-1.047C4.236 1.872 5.974 1.248 8 1.248"/>
+  <path d="M12 12a4 4 0 0 1-2.786-1.13l-.002-.002a1.6 1.6 0 0 0-.276-.167A2.2 2.2 0 0 0 8 10.5c-.414 0-.729.103-.935.201a1.6 1.6 0 0 0-.277.167l-.002.002A4 4 0 1 1 4 4h8a4 4 0 0 1 0 8"/>
+</svg>
         `;
             button.style.opacity = '0.5';
         };
