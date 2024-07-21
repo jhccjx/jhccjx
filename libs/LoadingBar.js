@@ -28,6 +28,7 @@ class LoadingBar{
 		bar.style.height = '100%';
 		bar.style.width = '0';
 		barBase.appendChild(bar);
+
 		this.progressBar = bar;
 		
 		document.body.appendChild(this.domElement);
