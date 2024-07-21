@@ -101,6 +101,36 @@ class VRButton{
 
         }
 
+        // Center the button
+        button.style.display = '';
+        button.style.position = 'absolute'; // Ensure the button is positioned absolutely
+        button.style.top = '50%'; // Move to the vertical center
+        button.style.left = '50%'; // Move to the horizontal center
+        button.style.transform = 'translate(-50%, -50%)'; // Adjust position to truly center it
+        button.style.width = '80px';
+        button.style.cursor = 'pointer';
+        button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
+
+        button.onmouseenter = function () {
+            button.style.fontSize = '12px';
+            button.textContent = (currentSession === null) ? 'ENTER VR' : 'EXIT VR';
+            button.style.opacity = '1.0';
+         };
+
+        button.onmouseleave = function () {
+            button.style.fontSize = '30px';
+            button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
+            button.style.opacity = '0.5';
+        };
+
+        button.onclick = function () {
+            if (currentSession === null) {
+                navigator.xr.requestSession(self.sessionMode, self.sessionInit).then(onSessionStarted);
+            } else {
+                currentSession.end();
+            }
+        };
+
         //
 
         button.style.display = '';
